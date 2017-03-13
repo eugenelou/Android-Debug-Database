@@ -32,6 +32,8 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         resValue("string", "PORT_NUMBER", "8080")
+        buildConfigField "String", "DB_NAME", "\"default.db\""
+        buildConfigField "String", "DB_PATH", "\"default/db\""
     }
 
     buildTypes {
