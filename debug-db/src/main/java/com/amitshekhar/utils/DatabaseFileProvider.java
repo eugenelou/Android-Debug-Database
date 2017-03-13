@@ -20,7 +20,7 @@
 package com.amitshekhar.utils;
 
 import android.content.Context;
-
+import com.amitshekhar.BuildConfig;
 import java.io.File;
 import java.util.HashMap;
 
@@ -39,6 +39,9 @@ public class DatabaseFileProvider {
         try {
             for (String databaseName : context.databaseList()) {
                 databaseFiles.put(databaseName, context.getDatabasePath(databaseName));
+            }
+            if(context instanceof DatabaseContext){
+                databaseFiles.put(BuildConfig.DB_NAME, ((DatabaseContext)context).getDatabasePath(BuildConfig.DB_NAME));
             }
         } catch (Exception e) {
             e.printStackTrace();
