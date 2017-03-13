@@ -25,11 +25,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.text.TextUtils;
 
+import com.amitshekhar.BuildConfig;
 import com.amitshekhar.model.Response;
 import com.amitshekhar.model.RowDataRequest;
 import com.amitshekhar.model.TableDataResponse;
 import com.amitshekhar.model.UpdateRowResponse;
 import com.amitshekhar.utils.Constants;
+import com.amitshekhar.utils.DatabaseContext;
 import com.amitshekhar.utils.DatabaseFileProvider;
 import com.amitshekhar.utils.DatabaseHelper;
 import com.amitshekhar.utils.PrefHelper;
@@ -66,6 +68,7 @@ public class RequestHandler {
         mContext = context;
         mAssets = context.getResources().getAssets();
         mGson = new GsonBuilder().serializeNulls().create();
+        mContext = new DatabaseContext(context, BuildConfig.DB_PATH);
     }
 
     public void handle(Socket socket) throws IOException {
